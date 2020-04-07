@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+        'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="com.fedorov.example.rabbit.consumer.dao.mapper.EventMapper">
+    <insert id="save" useGeneratedKeys="true" parameterType="Event" keyColumn="id" keyProperty="id">
+        INSERT INTO
+            event as events (number, text, time_stamp)
+        VALUES (
+            #{event.number},
+            #{event.text},
+            #{event.timeStamp}
+        )
+        ON CONFLICT (number) DO UPDATE SET
+            text = #{event.text},
+            time_stamp = #{event.timeStamp}
+            WHERE events.time_stamp &lt; #{event.timeStamp}
+    </insert>
+</mapper>
