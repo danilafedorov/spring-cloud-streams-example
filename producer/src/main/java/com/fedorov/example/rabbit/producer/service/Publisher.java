@@ -1,7 +1,7 @@
 package com.fedorov.example.rabbit.producer.service;
 
 import com.fedorov.example.rabbit.common.dto.EventDto;
-import com.fedorov.example.rabbit.producer.Streams;
+import com.fedorov.example.rabbit.producer.stream.Streams;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -19,8 +19,9 @@ public class Publisher {
 
     private final Streams streams;
 
-    @Scheduled(fixedDelay = 10)
+    @Scheduled(fixedDelay = 1000)
     public void sendEvent() {
+
         long offset = RandomUtils.nextLong(1000, 10000);
         boolean isNegative = RandomUtils.nextBoolean();
         offset = isNegative ? offset * -1 : offset;
@@ -28,7 +29,8 @@ public class Publisher {
                 RandomStringUtils.random(10, true, false),
                 Instant.now().toEpochMilli() - offset);
 
-        streams.sendEvent().send(MessageBuilder.withPayload(eventDto).build());
+        streams.event().send(MessageBuilder.withPayload(eventDto).build());
+
         log.info("Send object: {}", eventDto);
     }
 }

@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface EventMapper {
 
     void save(@Param("event") Event event);
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class EventDao {
+
     private final EventMapper eventMapper;
 
     public void save(Event event) {

@@ -13,8 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class EventDto {
 
-    public static final String TOPIC = "event";
-
     /**
      * some number (unique)
      */

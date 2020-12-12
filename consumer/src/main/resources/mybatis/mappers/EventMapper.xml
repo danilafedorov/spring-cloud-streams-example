@@ -10,8 +10,7 @@
             #{event.number},
             #{event.text},
             #{event.timeStamp}
-        )
-        ON CONFLICT (number) DO UPDATE SET
+        ) ON CONFLICT (number) DO UPDATE SET
             text = #{event.text},
             time_stamp = #{event.timeStamp}
             WHERE events.time_stamp &lt; #{event.timeStamp}

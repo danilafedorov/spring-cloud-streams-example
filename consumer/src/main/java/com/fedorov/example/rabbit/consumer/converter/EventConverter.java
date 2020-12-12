@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EventConverter implements Converter<EventDto, Event> {
+
     @Override
     public Event convert(EventDto eventDto) {
         Event event = new Event();
