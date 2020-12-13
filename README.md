@@ -5,4 +5,4 @@ Spring Cloud Stream. My goal was to try this framework.
 
 - producer - create some data and sends it to rabbit
 
-- consumer - receive some data and save only actual data
+- consumer - receive some data and save only actual
